@@ -51,11 +51,9 @@
   }
 
   .nav {
-    -webkit-box-align: center;
     align-items: center;
     display: flex;
     height: 72px;
-    -webkit-box-pack: justify;
     justify-content: space-between;
     max-width: 1200px;
     width: 100%;
