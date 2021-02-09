@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "snowpack dev",
+    "start": "node server.js",
+    "dev": "snowpack dev",
     "build": "snowpack build",
     "test": "echo \"This template does not include a test runner by default.\" && exit 1"
   },
