@@ -105,6 +105,8 @@
   .nav-list {
     display: flex;
     justify-content: center;
+    width: 100%;
+    padding-right: 6rem;
   }
 
   @media (max-width: 500px) {
