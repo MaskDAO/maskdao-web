@@ -13,6 +13,7 @@
         <a class="nav-item" href="/">Home</a>
         <a class="nav-item" href="https://discord.gg/8c73c3zR" target="_blank">Forum</a>
         <a href="https://docs.google.com/document/d/1G8Mzg5rSTQi27hHbNR4T2fJtvmO9MhhKSad7tjJWIW8/edit" target="_blank" class="nav-item">About</a>
+        <a class="nav-item" href="/tools" use:link>Tools</a>
       </div>
     </div>
     <div class="mode-toggle" on:click={toggle}>
@@ -27,6 +28,7 @@
 <script>
   import { brand } from "../store.js";
   import { createEventDispatcher } from "svelte"
+  import { link } from "svelte-spa-router"
 
   const dispatch = createEventDispatcher()
 
