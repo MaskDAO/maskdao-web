@@ -24,17 +24,19 @@
         <div class="row">
           {#each list as tool, j}
             <div class="col">
-              <div class="tool">
-                <a class="preview" href={tool.link} target="_blank">
-                  <img src={"/tools/"+tool.image} />
-                </a>
-                <a class="title" href={tool.link} target="_blank">
-                  {tool.title}
-                </a>
-                <div class="description">
-                  {tool.description}
+              {#if tool.title.length > 0}
+                <div class="tool">
+                  <a class="preview" href={tool.link} target="_blank">
+                    <img src={"/tools/"+tool.image} />
+                  </a>
+                  <a class="title" href={tool.link} target="_blank">
+                    {tool.title}
+                  </a>
+                  <div class="description">
+                    {tool.description}
+                  </div>
                 </div>
-              </div>
+              {/if}
             </div>
             {#if j < list.length - 1}
               <div class="sep"></div>
@@ -57,6 +59,12 @@
   let toolsList = [
     [
       {
+        title: "Hashmask Finder",
+        description: "Search, Sort, Visuals",
+        image: "hashmaskfinder.png",
+        link: "https://www.hashmaskfinder.com"
+      },
+      {
         title: "The Hashnames",
         description: "Search, Rankings, Trait Sort, My Collection, Visuals",
         image: "thehashnames.png",
@@ -67,15 +75,15 @@
         description: "Search, Rankings, My Collection, Visuals",
         image: "maskinson.png",
         link: "https://maskinson.netlify.app"
-      },
+      }
+    ],
+    [
       {
         title: "Maskswap",
         description: "Swap/Sell Hashmask names",
         image: "maskswap.png",
         link: "https://maskswap.xyz"
-      }
-    ],
-    [
+      },
       {
         title: "Hashmask Buyers and Sellers",
         description: "",
@@ -87,12 +95,26 @@
         description: "Rankings, Search, Sort, Visuals",
         image: "listings-1.png",
         link: "https://docs.google.com/spreadsheets/d/1rLagIfx4dSU_4ZbhuRxTjPYg0A5-ZQC8PIhLs29srwI/edit#gid=282814562"
-      },
+      }
+    ],
+    [
       {
         title: "Hashmask Listings #2",
         description: "Rankings, Search, Sort, Rarity",
         image: "listings-2.png",
         link: "https://docs.google.com/spreadsheets/d/1ha1KdYY3vCpAEcGqpTXv_U9PI6GhPoJs5-a1k6wuBzU/edit#gid=282814562"
+      },
+      {
+        title: "",
+        description: "",
+        image: "",
+        link: ""
+      },
+      {
+        title: "",
+        description: "",
+        image: "",
+        link: ""
       }
     ]
   ]
