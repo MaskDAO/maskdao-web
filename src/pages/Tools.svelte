@@ -33,6 +33,9 @@
                 </div>
               </div>
             </div>
+            {#if j < list.length - 1}
+              <div class="sep"></div>
+            {/if}
           {/each}
         </div>
       {/each}
