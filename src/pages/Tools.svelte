@@ -13,6 +13,9 @@
         Tools
       </h1>
       <p>
+        MaskDAO's funding to future projects/tools are not exclusive to Hashmask, but includes the entire NFT ecosystem.
+      </p>
+      <p>
       	ALL these tools are non-official Hashmask tools or data. They have been built by our community who would like to provide a perspective on the data, rankings, rarity and more. The MaskDAO is not responsible for the accuracy for any of the content presented on these links.
       </p>
     </section>

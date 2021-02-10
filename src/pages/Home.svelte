@@ -21,7 +21,7 @@
         Intro
       </h1>
       <p>
-        MaskDAO is a community led Decentralized Autonomous Organization (DAO) built off of Hashmask NFTs. The DAO focuses on building an artist marketplace, new NFT release curation, and community tools.
+        MaskDAO is a community led Decentralized Autonomous Organization (DAO) built off of <a href="https://www.thehashmasks.com/" target="_blank">Hashmask</a> NFTs. The DAO focuses on building an artist marketplace, new NFT release curation, and community tools.
       </p>
       <p>
         In order to launch MaskDAO, there will be a MSK governance token distribution event. Distribution will be rewarded to Hashmask owners and can be earned through liquidity mining programs.
