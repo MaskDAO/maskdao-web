@@ -84,7 +84,7 @@
   }
 
   .brand .icon img {
-    width: 36px;
+    height: 25px;
   }
 
   .brand .name {
