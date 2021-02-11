@@ -10,15 +10,7 @@ const limiter = new RateLimit({
     max: 200, // limit each IP to 100 requests per windowMs
     delayMs: 0 // disable delaying - full speed until the max limit is reached
 });
-const forceSsl = function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(['https://', req.get('Host'), req.url].join(''));
-  }
-  return next();
-};
-
 app.use(limiter);
-app.use(forceSsl);
 app.use(helmet());
 
 // the __dirname is the current directory from where the script is running

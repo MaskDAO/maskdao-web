@@ -10,7 +10,7 @@
   <div class="main">
     <section>
       <div class="hero-icon">
-        <img src="/maskdao-logo-stub.png" />
+        <img src="/logo.png" />
       </div>
       <div class="coming-soon">
         Coming Soon

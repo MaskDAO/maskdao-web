@@ -3,7 +3,7 @@
     <a class="brand-wrapper" href="/">
       <div class="brand">
         <span class="icon">
-          <img src="/maskdao-logo-stub.png" />
+          <img src="/logo.png" />
         </span>
         <span class="name">{brand}</span>
       </div>
@@ -84,7 +84,7 @@
   }
 
   .brand .icon img {
-    width: 24px;
+    width: 36px;
   }
 
   .brand .name {
