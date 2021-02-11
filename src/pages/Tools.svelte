@@ -85,8 +85,8 @@
         link: "https://maskswap.xyz"
       },
       {
-        title: "Hashmask Buyers and Sellers",
-        description: "",
+        title: "Hashmasks Price Discovery Tool ",
+        description: "Explore Hashmask value over time.",
         image: "datastudio-buyers-sellers.png",
         link: "https://datastudio.google.com/reporting/27448e37-daed-416f-a273-52a549d6726d/page/FQD1B"
       },

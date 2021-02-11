@@ -78,6 +78,11 @@
     text-decoration: none;
   }
 
+  .brand .icon {
+    align-items: center;
+    display: flex;
+  }
+
   .brand .icon img {
     width: 24px;
   }
@@ -86,7 +91,7 @@
     color: rgb(20, 1, 8);
     font-size: 18px;
     font-weight: 700;
-    margin-left: 8px;
+    margin-left: 4px;
   }
 
   body.dark .brand .name {
