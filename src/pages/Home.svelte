@@ -10,7 +10,7 @@
   <div class="main">
     <section>
       <div class="hero-icon">
-        <img src="/logo.png" />
+        <img src="/logo.svg" />
       </div>
       <div class="coming-soon">
         Coming Soon
@@ -62,9 +62,9 @@
   }
 
   .coming-soon {
-    color: rgb(222 197 150);;
-    font-size: 80px;
-    font-weight: 900;
+    color: rgb(228 201 155);
+    font-size: 70px;
+    font-weight: 800;
     margin: 0px;
     padding: 0px;
     text-align: center;
@@ -76,5 +76,18 @@
 
   .hero-icon img {
     height: 96px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-12px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
   }
 </style>

@@ -1,10 +1,10 @@
 <div class="mobile-menu-wrapper">
   <div class="backdrop" on:click={() => showNav(false)}></div>
   <div class="mobile-menu">
-    <a class="nav-item" href="/">Home</a>
+    <a class="nav-item" href="/" use:link>Home</a>
     <a class="nav-item" href="https://forum.maskdao.art" target="_blank">Forum</a>
-    <a href="https://docs.maskdao.art" target="_blank" class="nav-item">About</a>
     <a class="nav-item" href="/tools" use:link>Tools</a>
+    <a href="https://docs.maskdao.art" target="_blank" class="nav-item">About</a>
   </div>
 </div>
 

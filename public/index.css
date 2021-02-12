@@ -1,7 +1,7 @@
 body {
   background: #fdf5eb;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "KoHo", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -32,9 +32,6 @@ a:hover {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-button {
-  font-family: "Nunito";
 }
 
 .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
