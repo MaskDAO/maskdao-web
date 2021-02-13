@@ -29,7 +29,7 @@
 </div>
 
 <script>
-  import { brand } from "../store.js";
+  import { brand, setModal } from "../store.js";
   import { createEventDispatcher } from "svelte"
   import { link } from "svelte-spa-router"
 
@@ -46,7 +46,7 @@
   }
 
   function unlockWallet() {
-    alert("Under Development.")
+    setModal("unlockWallet")
   }
 </script>
 
@@ -105,7 +105,7 @@
     color: rgb(255, 255, 255);
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 660px) {
     .brand {
       width: auto;
       justify-content: flex-start;
@@ -123,7 +123,7 @@
     margin-left: 3rem;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 660px) {
     .nav-list {
       display: none;
     }
@@ -157,7 +157,7 @@
     align-items: center;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 660px) {
     .unlock-wallet {
       width: 100%;
       justify-content: flex-end;
@@ -186,13 +186,13 @@
     cursor: pointer;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 660px) {
     .mode-toggle {
       display: none;
     }
   }
 
-  @media (min-width: 501px) {
+  @media (min-width: 661px) {
     .mobile-menu-toggle {
       display: none;
     }
