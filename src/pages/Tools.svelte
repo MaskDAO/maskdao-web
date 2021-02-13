@@ -59,6 +59,12 @@
   let toolsList = [
     [
       {
+        title: "Hashmask Tools",
+        description: "Search, Sort, Rarity, Collections, Watchlist",
+        image: "hashmasktools.png",
+        link: "https://mask-tools-alpha.netlify.app"
+      },
+      {
         title: "Hashmask Finder",
         description: "Search, Sort, Visuals",
         image: "hashmaskfinder.png",
@@ -69,15 +75,15 @@
         description: "Search, Rankings, Trait Sort, My Collection, Visuals",
         image: "thehashnames.png",
         link: "https://thehashnames.com"
-      },
+      }
+    ],
+    [
       {
         title: "Maskinson",
         description: "Search, Rankings, My Collection, Visuals",
         image: "maskinson.png",
         link: "https://maskinson.netlify.app"
-      }
-    ],
-    [
+      },
       {
         title: "Maskswap",
         description: "Swap/Sell Hashmask names",
@@ -89,15 +95,15 @@
         description: "Explore Hashmask value over time.",
         image: "datastudio-buyers-sellers.png",
         link: "https://datastudio.google.com/reporting/27448e37-daed-416f-a273-52a549d6726d/page/FQD1B"
-      },
+      }
+    ],
+    [
       {
         title: "Hashmask Listings #1",
         description: "Rankings, Search, Sort, Visuals",
         image: "listings-1.png",
         link: "https://docs.google.com/spreadsheets/d/1rLagIfx4dSU_4ZbhuRxTjPYg0A5-ZQC8PIhLs29srwI/edit#gid=282814562"
-      }
-    ],
-    [
+      },
       {
         title: "Hashmask Listings #2",
         description: "Rankings, Search, Sort, Rarity",
@@ -105,16 +111,10 @@
         link: "https://docs.google.com/spreadsheets/d/1ha1KdYY3vCpAEcGqpTXv_U9PI6GhPoJs5-a1k6wuBzU/edit#gid=282814562"
       },
       {
-        title: "",
-        description: "",
-        image: "",
-        link: ""
-      },
-      {
-        title: "",
-        description: "",
-        image: "",
-        link: ""
+        title: "Hashmask Tools",
+        description: "Search, Sort, Rarity, Collections, Watchlist",
+        image: "hashmasktools.png",
+        link: "https://mask-tools-alpha.netlify.app"
       }
     ]
   ]
