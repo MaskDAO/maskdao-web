@@ -25,14 +25,16 @@
     flex-direction: column;
     justify-content: center;
     position: fixed;
-    inset: 0px;
-    backdrop-filter: blur(3px);
+    top: 0;
+    height: 100vh;
+    width: 100%;
   }
 
   .overlay {
     background-color: rgba(91, 57, 38, 0.667);
     position: absolute;
-    inset: 0px;
+    height: 100vh;
+    width: 100%;
   }
 
   .modal-wrapper {

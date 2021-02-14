@@ -2,7 +2,7 @@
   <div class="main">
     <section>
       <div class="hero-icon">
-        <img src="/maskdao-logo-stub.png" />
+        <img src="/logo.svg" />
       </div>
       <div class="coming-soon">
         Not Found
