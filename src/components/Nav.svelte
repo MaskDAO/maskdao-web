@@ -11,8 +11,9 @@
     <div class="nav-list">
       <div class="flex-center">
         <a class="nav-item" href="/" use:link>Home</a>
-        <a class="nav-item" href="https://forum.maskdao.art" target="_blank">Forum</a>
+        <!-- <a class="nav-item" href="https://forum.maskdao.art" target="_blank">Forum</a> -->
         <a class="nav-item" href="/tools" use:link>Tools</a>
+        <a class="nav-item" href="/gallery" use:link>Gallery</a>
         <a href="https://docs.maskdao.art" target="_blank" class="nav-item">About</a>
       </div>
     </div>
