@@ -14,7 +14,7 @@ app.use(limiter);
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      imgSrc: ["'self'", "https://hashmasksstore.blob.core.windows.net"]
+      defaultSrc: ["'self'", "https://hashmasksstore.blob.core.windows.net", "https://fonts.googleapis.com"]
     },
   })
 );
