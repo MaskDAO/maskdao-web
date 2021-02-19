@@ -12,12 +12,14 @@ const limiter = new RateLimit({
 });
 app.use(limiter);
 app.use(helmet(
-  contentSecurityPolicy: {
-    directives: {
-      ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      "image-src": ["'self'", "'unsafe-inline'", "https://hashmasksstore.blob.core.windows.net/"],
-    },
-  },
+  {
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "image-src": ["'self'", "'unsafe-inline'", "https://hashmasksstore.blob.core.windows.net/"],
+      },
+    }
+  }
 ));
 
 // the __dirname is the current directory from where the script is running
