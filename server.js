@@ -15,7 +15,8 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://hashmasksstore.blob.core.windows.net"],
+      scriptSrc: ["'self'"],
+      imgSrc: ["'self'", "https://hashmasksstore.blob.core.windows.net"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
