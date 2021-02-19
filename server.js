@@ -11,7 +11,16 @@ const limiter = new RateLimit({
     delayMs: 0 // disable delaying - full speed until the max limit is reached
 });
 app.use(limiter);
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://hashmasksstore.blob.core.windows.net"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
 
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
