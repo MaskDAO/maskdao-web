@@ -10,7 +10,7 @@
   <div class="main">
     <section>
       <h1>
-        Tools
+        Tools ({ toolsList.flat().length })
       </h1>
       <p>
         MaskDAO's funding to future projects/tools are not exclusive to Hashmask, but includes the entire NFT ecosystem.
@@ -57,6 +57,20 @@
   let open = false
 
   let toolsList = [
+    [
+      {
+        title: "Hashy Verse",
+        description: "Rankings, Search, Sort, Name Change",
+        image: "hashyverse.png",
+        link: "https://hashyverse.com"
+      },
+      {
+        title: "Mask Radar",
+        description: "Rankings, Search, Sort, Rarity",
+        image: "maskradar.png",
+        link: "https://maskradar.yobalabs.com"
+      }
+    ],
     [
       {
         title: "Hashmask Tools",

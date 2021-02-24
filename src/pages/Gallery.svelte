@@ -15,12 +15,15 @@
       <div>
         Data source: <a href="https://github.com/krzysu/hashmasks-db">krzysu/hashmasks-db</a>, <a href="https://twitter.com/c0d1ngpanda">c0d1ngpanda</a>
       </div>
+      <div>
+        Curated based on the implicit traits of each Hashmask.
+      </div>
       {#each Object.keys(gallery) as id, i}
         <div class="collection">
           <div class="metadata">
-            <div class="title">{ galleryDetail[id].name }</div>
+            <div class="title">{ galleryDetail[id].name } ({ gallery[id].length })</div>
             <div class="description">
-              Curated based on the implicit traits of each Hashmask.
+              
             </div>
             <div class="button">View Collection</div>
           </div>
