@@ -1,28 +1,30 @@
-<div class="pool">
-  <div class="metadata">
-    <div class="pool-info">
-      <div class="token">
-        <img src={ '/coins/' + ticker + '.png' } />
+<div class="pool-wrapper">
+  <div class="pool">
+    <div class="metadata">
+      <div class="pool-info">
+        <div class="token">
+          <img src={ '/coins/' + ticker + '.png' } />
+        </div>
+        <div class="pair-info">
+          <div class="pair-name">{ name }</div>
+          <div class="pair-ticker">{ ticker }</div>
+        </div>
       </div>
-      <div class="pair-info">
-        <div class="pair-name">{ name }</div>
-        <div class="pair-ticker">{ ticker }</div>
+      <div class="apy">Earn MSKD at { apy*100 }% APY</div>
+      <div class="state">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="5.5" cy="5.5" r="5.5" fill={circleState[state]}/>
+        </svg>
+        { state }
       </div>
     </div>
-    <div class="apy">Earn MSKD at { apy*100 }% APY</div>
-    <div class="state">
-      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="5.5" cy="5.5" r="5.5" fill={circleState[state]}/>
-      </svg>
-      { state }
+    <div>
+      <div class="liquidity">Liquidity</div>
+      <div>$ { liquidity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</div>
     </div>
+    <div class="button" on:click={() => underDevelopment()}>Deposit</div>
+    <div class="button alt" on:click={() => underDevelopment()}>Claim</div>
   </div>
-  <div>
-    <div class="liquidity">Liquidity</div>
-    <div>$ { liquidity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</div>
-  </div>
-  <div class="button" on:click={() => underDevelopment()}>Deposit</div>
-  <div class="button alt" on:click={() => underDevelopment()}>Claim</div>
 </div>
 
 <script>
@@ -43,18 +45,25 @@
 </script>
 
 <style>
+  .pool-wrapper {
+    display: inline-block;
+    width: calc(33.3333% - 1rem);
+    margin: 1rem .5rem;
+  }
+
   .pool {
     background: #fdf5eb;
-    margin: 1rem .5rem;
     padding: 1rem;
-    width: calc(33.3333% - 3rem);
-    display: inline-block;
   }
 
   @media (max-width: 680px) {
     .pool {
       width: calc(100% - 3rem);
     }
+  }
+
+  body.dark .pool-wrapper .pool {
+    background: #585858;
   }
 
   .pool .metadata {
@@ -151,5 +160,10 @@
     background: none;
     color: #000;
     border-color: #000;
+  }
+
+  body.dark .pool-wrapper .pool .button.alt {
+    color: #fff;
+    border-color: #fff;
   }
 </style>

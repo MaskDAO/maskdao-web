@@ -211,6 +211,6 @@
   }
 
   .tool .description {
-    color: rgb(141, 124, 130);
+    color: #ccc;
   }
 </style>

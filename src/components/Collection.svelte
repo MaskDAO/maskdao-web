@@ -1,16 +1,18 @@
-<div class="collection">
-  <div class="metadata">
-    <div class="title">{ title }</div>
-    <div class="description">
-      { description }
+<div class="collection-wrapper">
+  <div class="collection">
+    <div class="metadata">
+      <div class="title">{ title }</div>
+      <div class="description">
+        { description }
+      </div>
     </div>
+    <div class="mask-list">
+      {#each masks as mask, j}
+        <img src={`https://hashmasksstore.blob.core.windows.net/hashmaskspreview/${mask}.png`} />
+      {/each}
+    </div>
+    <div class="button" on:click={() => underDevelopment()}>Visit</div>
   </div>
-  <div class="mask-list">
-    {#each masks as mask, j}
-      <img src={`https://hashmasksstore.blob.core.windows.net/hashmaskspreview/${mask}.png`} />
-    {/each}
-  </div>
-  <div class="button" on:click={() => underDevelopment()}>Visit</div>
 </div>
 
 <script>
@@ -42,12 +44,19 @@
     width: 10rem;
   }
 
+  .collection-wrapper {
+    margin: 1rem .5rem;
+    width: calc(33.3333% - 1rem);
+    display: inline-block;
+  }
+  
   .collection {
     background: #fff;
-    margin: 1rem .5rem;
     padding: 1rem;
-    width: calc(33.3333% - 3rem);
-    display: inline-block;
+  }
+
+  body.dark .collection-wrapper .collection {
+    background: #585858;
   }
 
   @media (max-width: 680px) {
@@ -59,7 +68,7 @@
   .collection .metadata {
     background: #cbebef;
     padding: .8rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     font-size: 0.8rem;
   }
 
@@ -100,7 +109,6 @@
   }
 
   .collection .mask-list img {
-    margin-left: .5rem;
     cursor: pointer;
     border: 1px solid transparent;
   }
