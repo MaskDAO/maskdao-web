@@ -51,15 +51,15 @@
     margin: 1rem .5rem;
   }
 
+  @media (max-width: 680px) {
+    .pool-wrapper {
+      width: calc(100% - 1rem);
+    }
+  }
+
   .pool {
     background: #fdf5eb;
     padding: 1rem;
-  }
-
-  @media (max-width: 680px) {
-    .pool {
-      width: calc(100% - 3rem);
-    }
   }
 
   body.dark .pool-wrapper .pool {

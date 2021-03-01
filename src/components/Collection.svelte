@@ -50,6 +50,12 @@
     display: inline-block;
   }
   
+  @media (max-width: 680px) {
+    .collection-wrapper {
+      width: calc(100% - 1rem);
+    }
+  }
+  
   .collection {
     background: #fff;
     padding: 1rem;
@@ -57,12 +63,6 @@
 
   body.dark .collection-wrapper .collection {
     background: #585858;
-  }
-
-  @media (max-width: 680px) {
-    .collection {
-      width: calc(100% - 3rem);
-    }
   }
 
   .collection .metadata {
