@@ -506,6 +506,13 @@ export const pool = [
   },
   {
     state: "active",
+    name: "NCT Comedy",
+    ticker: "nct-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  },
+  {
+    state: "active",
     name: "Mana Musical",
     ticker: "mana-eth",
     apy: 0.67,
@@ -517,7 +524,21 @@ export const pool = [
     ticker: "nftx-eth",
     apy: 0.67,
     liquidity: 3456123
-  }
+  },
+  {
+    state: "offline",
+    name: "Punk Performance",
+    ticker: "punk-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  },
+  {
+    state: "offline",
+    name: "Axies Satire",
+    ticker: "axs-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  },
 ]
 
 export const setModal = function(value) {
