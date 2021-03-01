@@ -10,13 +10,17 @@
       <img src={`https://hashmasksstore.blob.core.windows.net/hashmaskspreview/${mask}.png`} />
     {/each}
   </div>
-  <div class="button">Visit</div>
+  <div class="button" on:click={() => underDevelopment()}>Visit</div>
 </div>
 
 <script>
   export let title = "";
   export let description = "";
   export let masks = [];
+
+  function underDevelopment() {
+    alert("Under Development. Thanks for trying.")
+  }
 </script>
 
 <style>

@@ -21,8 +21,8 @@
     <div class="liquidity">Liquidity</div>
     <div>$ { liquidity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</div>
   </div>
-  <div class="button">Deposit</div>
-  <div class="button alt">Claim</div>
+  <div class="button" on:click={() => underDevelopment()}>Deposit</div>
+  <div class="button alt" on:click={() => underDevelopment()}>Claim</div>
 </div>
 
 <script>
@@ -35,6 +35,10 @@
   const circleState = {
     active: "#90e0b0",
     offline: "#e0a390"
+  }
+
+  function underDevelopment() {
+    alert("Under Development. Thanks for trying.")
   }
 </script>
 
