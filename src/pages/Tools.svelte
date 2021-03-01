@@ -76,7 +76,7 @@
         title: "Hashmask Tools",
         description: "Search, Sort, Rarity, Collections, Watchlist",
         image: "hashmasktools.png",
-        link: "https://mask-tools-alpha.netlify.app"
+        link: "https://hashmasktools.xyz"
       },
       {
         title: "Hashmask Finder",

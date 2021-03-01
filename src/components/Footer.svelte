@@ -44,14 +44,22 @@
   }
 
   .footer-item {
-    color: rgb(141, 124, 130);
+    color: #666;
     padding-left: 16px;
     padding-right: 16px;
     text-decoration: none;
   }
 
+  body.dark .footer .footer-item {
+    color: #ccc;
+  }
+
   .footer-item:hover {
-    color: rgb(104, 85, 92);
+    color: #000;
+  }
+
+  body.dark .footer .footer-item:hover {
+    color: #fff;
   }
 
   .mode-toggle {

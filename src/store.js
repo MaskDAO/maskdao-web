@@ -496,6 +496,29 @@ export const gallery = {
     7862
   ]
 }
+export const pool = [
+  {
+    state: "active",
+    name: "Mask Mime",
+    ticker: "mask-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  },
+  {
+    state: "active",
+    name: "Mana Musical",
+    ticker: "mana-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  },
+  {
+    state: "offline",
+    name: "NFTX Vaudeville",
+    ticker: "nftx-eth",
+    apy: 0.67,
+    liquidity: 3456123
+  }
+]
 
 export const setModal = function(value) {
   modal.set(value)

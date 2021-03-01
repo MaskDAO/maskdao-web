@@ -18,7 +18,6 @@
 <style>
   .title {
     align-items: center;
-    color: rgb(91, 57, 38);
     display: flex;
     font-size: 18px;
     font-weight: 700;
@@ -27,7 +26,6 @@
   }
 
   .content {
-    color: rgb(91, 57, 38);
     padding: 24px;
     text-align: center;
   }

@@ -10,7 +10,7 @@
   <div class="main">
     <section>
       <h2>
-        Collections
+        Gallery ({ Object.keys(gallery).length })
       </h2>
       <div>
         Data source: <a href="https://github.com/krzysu/hashmasks-db">krzysu/hashmasks-db</a>, <a href="https://twitter.com/c0d1ngpanda">c0d1ngpanda</a>
@@ -19,20 +19,11 @@
         Curated based on the implicit traits of each Hashmask.
       </div>
       {#each Object.keys(gallery) as id, i}
-        <div class="collection">
-          <div class="metadata">
-            <div class="title">{ galleryDetail[id].name } ({ gallery[id].length })</div>
-            <div class="description">
-              
-            </div>
-            <div class="button">View Collection</div>
-          </div>
-          <div class="mask-list">
-            {#each gallery[id].slice(0, 4) as mask, j}
-              <img src={`https://hashmasksstore.blob.core.windows.net/hashmaskspreview/${mask}.png`} />
-            {/each}
-          </div>
-        </div>
+        <Collection
+          title={galleryDetail[id].name}
+          description={gallery[id].length}
+          masks={gallery[id].slice(0, 4)}
+        />
       {/each}
     </section>
   </div>
@@ -43,6 +34,7 @@
   import Nav from "../components/Nav.svelte"
   import MobileMenu from "../components/MobileMenu.svelte"
   import Footer from "../components/Footer.svelte"
+  import Collection from "../components/Collection.svelte"
   import { gallery, galleryDetail } from "../store.js";
 
   let open = false
@@ -110,6 +102,11 @@
     flex-direction: column;
     min-height: calc(100vh - 160px);
     padding: 48px 0px;
+    background: #e7f5f8;
+  }
+
+  body.dark .app div .main {
+    background: #2b2b2b;
   }
 
   section {
@@ -118,68 +115,5 @@
     max-width: 800px;
     padding: 0px 24px;
     width: 100%;
-  }
-
-  .mask-list {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .mask + .mask {
-    margin-left: 1rem;
-  }
-
-  .mask img {
-    width: 10rem;
-  }
-
-  .collection {
-    display: flex;
-    background: #c6e8f9;
-    margin: 1rem 0;
-    padding: 1rem;
-  }
-
-  .collection .metadata {
-    width: 320%;
-  }
-
-  .collection .metadata .title {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .collection .metadata .description {
-    margin: 1rem 0;
-  }
-
-  .collection .metadata .button {
-    padding: 0 1rem;
-    margin: .5rem 0;
-    border-radius: 8px;
-    background: #000;
-    color: #fff;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    white-space: nowrap;
-    height: 2.25rem;
-    line-height: 2.25rem;
-    width: 7rem;
-  }
-
-  .collection .mask-list {
-    height: 8rem;
-  }
-
-  .collection .mask-list img {
-    margin-left: .5rem;
-    cursor: pointer;
-    border: 1px solid transparent;
-  }
-
-  .collection .mask-list img:hover {
-    border-color: #000;
   }
 </style>

@@ -71,7 +71,7 @@
 
   .nav-item {
     box-sizing: border-box;
-    color: rgb(141, 124, 130);
+    color: #666;
     font-size: 24px;
     font-weight: 700;
     padding: 1rem 2rem;
@@ -81,6 +81,6 @@
   }
 
   .nav-item:hover {
-    color: rgb(104, 85, 92);
+    color: #000;
   }
 </style>

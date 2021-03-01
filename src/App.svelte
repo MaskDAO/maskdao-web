@@ -14,7 +14,7 @@
 
 <style>
   :global(body.dark) {
-    background: radial-gradient(circle at center top, rgb(74 74 74), rgb(35 32 24)) 0% 0% / cover fixed;
-    color: rgb(255, 255, 255);
+    background: #2b2b2b;
+    color: #fff;
   }
 </style>

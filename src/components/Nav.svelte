@@ -10,10 +10,11 @@
     </a>
     <div class="nav-list">
       <div class="flex-center">
-        <a class="nav-item" href="/" use:link>Home</a>
+        <a class="nav-item" href="/stage" use:link>Stage</a>
+        <!-- <a class="nav-item" href="/" use:link>Home</a> -->
         <!-- <a class="nav-item" href="https://forum.maskdao.art" target="_blank">Forum</a> -->
-        <a class="nav-item" href="/tools" use:link>Tools</a>
         <a class="nav-item" href="/gallery" use:link>Gallery</a>
+        <a class="nav-item" href="/tools" use:link>Tools</a>
         <a href="https://docs.maskdao.art" target="_blank" class="nav-item">About</a>
       </div>
     </div>
@@ -55,7 +56,6 @@
   .nav-wrapper {
     box-sizing: border-box;
     margin: 0px auto;
-    max-width: 1200px;
     padding: 0px 24px;
     width: 100%;
   }
@@ -65,8 +65,13 @@
     display: flex;
     height: 72px;
     justify-content: space-between;
-    max-width: 1200px;
-    width: 100%;
+    background: #fdf5eb;
+    margin: 0 -24px;
+    padding: 0px 24px;
+  }
+
+  body.dark .nav-wrapper .nav {
+    background: #1d1d1d;
   }
 
   .brand-wrapper {
@@ -74,10 +79,8 @@
   }
 
   .brand {
-    -webkit-box-align: center;
     align-items: center;
     display: flex;
-    -webkit-box-pack: center;
     justify-content: center;
     margin: 0px;
     min-height: 44px;
@@ -142,15 +145,40 @@
   }
 
   .nav-list .nav-item {
-    color: rgb(141, 124, 130);
+    color: #666;
     padding-left: 16px;
     padding-right: 16px;
     text-decoration: none;
     font-weight: bold;
   }
 
+  body.dark .nav-list .nav-item {
+    color: #ccc;
+  }
+
+  .nav-list .nav-item::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+  }
+
+  body.dark .nav-list .nav-item::after {
+    background: #fff;
+  }
+
   .nav-list .nav-item:hover {
-    color: rgb(104, 85, 92);
+    color: #000;
+  }
+
+  body.dark .nav-list .nav-item:hover {
+    color: #fff;
+  }
+
+  .nav-list .nav-item:hover::after {
+    width: 100%;
   }
 
   .unlock-wallet {

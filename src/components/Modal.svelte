@@ -37,6 +37,10 @@
     width: 100%;
   }
 
+  body.dark .overlay-wrapper .overlay {
+    background-color: rgba(255, 255, 255, 0.667);
+  }
+
   .modal-wrapper {
     display: flex;
     flex-direction: column;
@@ -52,5 +56,10 @@
     border: 0px;
     border-radius: 8px;
     padding: 0 1rem;
+  }
+
+  body.dark .modal-wrapper .modal {
+    background: #2b2b2b;
+    color: #fff;
   }
 </style>

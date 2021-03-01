@@ -8,24 +8,37 @@
     on:message={showNav}/>
   {/if}
   <div class="main">
-    <section>
-      <div class="hero-icon">
-        <img src="/logo.svg" />
-      </div>
-      <div class="coming-soon">
-        Coming Soon
+    <section class="section stage">
+      <div class="wrapper">
+        <div class="subtitle">
+          <h1>Stage</h1>
+          <a class="see-all" href="/stage" use:link>See All ({pool.length})</a>
+        </div>
+        {#each selectedPools as pool, i}
+          <Pool
+            ticker={pool.ticker}
+            name={pool.name}
+            state={pool.state}
+            apy={pool.apy}
+            liquidity={pool.liquidity}
+          />
+        {/each}
       </div>
     </section>
-    <section>
-      <h1>
-        Intro
-      </h1>
-      <p>
-        MaskDAO is a community led Decentralized Autonomous Organization (DAO) built off of <a href="https://www.thehashmasks.com/" target="_blank">Hashmask</a> NFTs. The DAO focuses on building an artist marketplace, new NFT release curation, and community tools.
-      </p>
-      <p>
-        In order to launch MaskDAO, there will be a MSK governance token distribution event. Distribution will be rewarded to Hashmask owners and can be earned through liquidity mining programs.
-      </p>
+    <section class="section gallery">
+      <div class="wrapper">
+        <div class="subtitle">
+          <h1>Gallery</h1>
+          <a class="see-all" href="/gallery" use:link>See All ({galleryCount})</a>
+        </div>
+        {#each selectedCollections as id, i}
+          <Collection
+            title={galleryDetail[id].name}
+            description={gallery[id].length}
+            masks={gallery[id].slice(0, 4)}
+          />
+        {/each}
+      </div>
     </section>
   </div>
   <Footer />
@@ -35,12 +48,25 @@
   import Nav from "../components/Nav.svelte"
   import MobileMenu from "../components/MobileMenu.svelte"
   import Footer from "../components/Footer.svelte"
+  import Collection from "../components/Collection.svelte"
+  import Pool from "../components/Pool.svelte"
+  import { gallery, galleryDetail, pool } from "../store.js"
+  import { link } from "svelte-spa-router"
 
   let open = false
+  let galleryCount = Object.keys(gallery).length
 
   const showNav = function(event) {
     open = event.detail.open
   }
+
+  let nums = new Set()
+  while(nums.size !== 3) {
+    nums.add(Math.floor(Math.random() * galleryCount))
+  }
+  const selectedCollections = [...nums].slice(0, 3).map(n => Object.keys(gallery)[n])
+
+  const selectedPools = pool.slice(0, 3)
 </script>
 
 <style>
@@ -89,5 +115,34 @@
     100% {
       transform: translatey(0px);
     }
+  }
+
+  .section {
+    max-width: none;
+    padding: 2rem;
+  }
+
+  .section.gallery {
+    background: #e7f5f8;
+  }
+
+  body.dark .main .section.gallery {
+    background: #424242;
+  }
+
+  .wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .subtitle {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a.see-all {
+    color: inherit;
+    text-decoration: underline;
   }
 </style>
