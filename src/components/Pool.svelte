@@ -3,7 +3,10 @@
     <div class="metadata">
       <div class="pool-info">
         <div class="token">
-          <img src={ '/coins/' + ticker + '.png' } />
+        <picture>
+          <source type="image/webp" srcset={ '/coins/' + ticker + '.webp' } />
+          <img src={ '/coins/' + ticker + '.png' } alt={ticker+" icon"} />
+        </picture>
         </div>
         <div class="pair-info">
           <div class="pair-name">{ name }</div>
