@@ -8,10 +8,16 @@
     on:message={showNav}/>
   {/if}
   <div class="main">
-    <div class="hero-icon">
-      <img src="/logo.svg" />
-    </div>
-    <a class="button" target="_blank" href="https://boredhash.com">Claim MSK</a>
+    <h1>About</h1>
+    <p>
+      Welcome to The Great Online Game, Player One. You’ve made it down the MaskDAO rabbit hole this far so maybe you’re an infinite gamer. Here’s a checklist to see if you are and fit well with MaskDAO’s Whys:
+    </p>
+  	<ul>
+  		<li>Your strength resides within not from trying to dominate for a sense of power</li>
+      <li>You genuinely have fun learning new things, helping and meeting new people</li>
+      <li>You’re willing to break rules (not the law) and test boundaries</li>
+    </ul>
+    <a href="https://maskdao.medium.com/maskdao-for-real-now-a9e62e9b8a90" target="_blank">Read More</a>
   </div>
   <Footer />
 </div>
@@ -24,6 +30,10 @@
 
   let open = false
 
+  let msk = "https://etherscan.io/token/0xfdd7399e22918ba7234f5568cc2ef922489f7ba6"
+
+  let msk_rinkeby = "https://rinkeby.etherscan.io/token/0xfdd7399e22918ba7234f5568cc2ef922489f7ba6"
+
   const showNav = function(event) {
     open = event.detail.open
   }
@@ -31,12 +41,11 @@
 
 <style>
   .main {
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    text-align: left;
     min-height: calc(100vh - 160px);
-    padding: 48px 0px;
+    padding: 48px;
+    max-width: 1024px;
+    margin: 0 auto;
   }
 
   section {
@@ -105,18 +114,4 @@
     color: inherit;
     text-decoration: underline;
   }
-
-  .button {
-    padding: .5rem 1.5rem;
-    margin: 1rem;
-    background: #eca333;
-    border-radius: 28px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: 700;
-    white-space: nowrap;
-    height: 2.25rem;
-    line-height: 2.25rem;
-}
 </style>

@@ -1,14 +1,14 @@
 import Home from './pages/Home.svelte'
+import About from './pages/About.svelte'
 import Tools from './pages/Tools.svelte'
-import Gallery from './pages/Gallery.svelte'
-import Stage from './pages/Stage.svelte'
+import Addresses from './pages/Addresses.svelte'
 import NotFound from './pages/NotFound.svelte'
 
 const routes = {
   '/': Home,
+  '/about': About,
   '/tools': Tools,
-  '/gallery': Gallery,
-  '/stage': Stage,
+  '/addresses': Addresses,
   '*': NotFound
 }
 

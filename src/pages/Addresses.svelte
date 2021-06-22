@@ -8,10 +8,11 @@
     on:message={showNav}/>
   {/if}
   <div class="main">
-    <div class="hero-icon">
-      <img src="/logo.svg" />
-    </div>
-    <a class="button" target="_blank" href="https://boredhash.com">Claim MSK</a>
+    <h1>Addresses</h1>
+    <div>MSK Token - ETH Mainnet</div>
+    <a href={msk} target="_blank">{msk}</a>
+    <div>MSK Token - ETH Rinkeby Testnet</div>
+    <a href={msk_rinkeby}>{msk_rinkeby}</a>
   </div>
   <Footer />
 </div>
@@ -23,6 +24,10 @@
   import { link } from "svelte-spa-router"
 
   let open = false
+
+  let msk = "https://etherscan.io/token/0xfdd7399e22918ba7234f5568cc2ef922489f7ba6"
+
+  let msk_rinkeby = "https://rinkeby.etherscan.io/token/0xfdd7399e22918ba7234f5568cc2ef922489f7ba6"
 
   const showNav = function(event) {
     open = event.detail.open
@@ -105,18 +110,4 @@
     color: inherit;
     text-decoration: underline;
   }
-
-  .button {
-    padding: .5rem 1.5rem;
-    margin: 1rem;
-    background: #eca333;
-    border-radius: 28px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: 700;
-    white-space: nowrap;
-    height: 2.25rem;
-    line-height: 2.25rem;
-}
 </style>
