@@ -3,6 +3,7 @@
   <div class="mobile-menu">
     <a class="nav-item" href="/" use:link>Home</a>
     <a class="nav-item" href="/about" use:link>About</a>
+    <a class="nav-item" href="/museum" use:link>The Museum</a>
   </div>
 </div>
 
