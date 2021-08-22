@@ -11,7 +11,8 @@
     <div class="hero-icon">
       <img src="/logo.svg" />
     </div>
-    <a class="button" target="_blank" href="https://info.uniswap.org/#/pools/0x4ebc76bba018abc76b18afc61c7345ea0af0a037">Swap</a>
+    <h1>MaskDAO</h1>
+    <div>Hashmask-inspired Decentralized Community</div>
   </div>
   <Footer />
 </div>

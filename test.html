@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        var totalSupply = 0;
+        var maxSupply = 250;
+        var userAccount = '';
+        var numMasks = 0;
+        var numTikets = 0;
+        var numNcts = 0;
+        var tk_addr = "0x41c53e13ADF7CDe1Cb2d60368a65E0ad49A2804a";
+        var tk_abi = [{"inputs":[{"internalType":"address","name":"hmAddress","type":"address"},{"internalType":"address","name":"nctAddress","type":"address"},{"internalType":"address","name":"daoTreasury","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"MAX_SUPPLY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MINT_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"destination","type":"address"},{"internalType":"uint256","name":"number","type":"uint256"}],"name":"assignTickets","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mintTicket","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"uri","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+        var hm_addr = "0x506dd0391e02971F05c5d6ee4Ae557091Cf58bd7";
+        var hm_abi = [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"address","name":"nctAddress","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"uint256","name":"maskIndex","type":"uint256"},{"indexed":false,"internalType":"string","name":"newName","type":"string"}],"name":"NameChange","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"HASHMASKS_PROVENANCE","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MAX_NFT_SUPPLY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"NAME_CHANGE_PRICE","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"REVEAL_TIMESTAMP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"SALE_START_TIMESTAMP","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"string","name":"newName","type":"string"}],"name":"changeName","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"finalizeStartingIndex","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getNFTPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"isMintedBeforeReveal","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"nameString","type":"string"}],"name":"isNameReserved","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"numberOfNfts","type":"uint256"}],"name":"mintNFT","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"startingIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"startingIndexBlock","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"str","type":"string"}],"name":"toLower","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenNameByIndex","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"str","type":"string"}],"name":"validateName","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+        var nct_addr = "0x7D7c5BFb9fB88be7E9F0cd3636261D13Cc876B05";
+        var nct_abi = [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint256","name":"emissionStartTimestamp","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"INITIAL_ALLOTMENT","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PRE_REVEAL_MULTIPLIER","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"SECONDS_IN_A_DAY","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenIndex","type":"uint256"}],"name":"accumulated","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"burnQuantity","type":"uint256"}],"name":"burn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256[]","name":"tokenIndices","type":"uint256[]"}],"name":"claim","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"emissionEnd","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emissionPerDay","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emissionStart","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenIndex","type":"uint256"}],"name":"lastClaim","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"masksAddress","type":"address"}],"name":"setMasksAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}];
+    </script>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            reloadInfo();
+
+            if (window.ethereum) {
+                web3 = new Web3(ethereum);
+
+                try {
+                    // Request account access if needed
+                    ethereum.enable().then(result => {
+                        // Now you can start your app & access web3 freely:
+                        startApp()
+                    })
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+            // Legacy dapp browsers, checking if Web3 has been injected by the browser (Mist/MetaMask)
+            else if (typeof web3 !== 'undefined') {
+                // Use Mist/MetaMask's provider
+                web3 = new Web3(web3.currentProvider);
+
+                // Now you can start your app & access web3 freely:
+                startApp();
+
+            } else {
+                // put an error here
+                startApp();
+            }
+        })
+
+
+        // Get current network
+        function startApp() {
+            
+            web3.eth.net.getId().then( n => {
+
+                $('#enableMetamask').click(function () {
+                    connectMetamask();
+                    reloadInfo();
+                });
+
+                web3.eth.getAccounts().then(accounts => {
+                    userAccount = accounts[0];
+                    reloadInfo();
+                })
+            })
+        }
+
+        function connectMetamask() {
+            ethereum
+                .request({method: 'eth_requestAccounts'})
+                .then(handleAccountsChanged)
+                .catch((err) => {
+                    if (err.code === 4001) {
+                        // EIP-1193 userRejectedRequest error
+                        // If this happens, the user rejected the connection request.
+                        console.log('Please connect to MetaMask.');
+                        $('#status').html('You refused to connect Metamask')
+                    } else {
+                        console.error(err);
+                    }
+                });
+        }
+
+        function handleAccountsChanged(accounts) {
+            console.log('Calling HandleChanged')
+
+            if (accounts.length === 0) {
+                console.log('Please connect to MetaMask.');
+                $('#enableMetamask').html('Connect with Metamask')
+            } else if (accounts[0] !== userAccount) {
+                userAccount = accounts[0];
+                $('#enableMetamask').html(userAccount)
+                $('#status').html('')
+
+                if (userAccount != null) {
+                    // Set the button label
+                    $('#enableMetamask').html(userAccount)
+                    $("#enableMetamask").attr('disabled', true)
+                }
+            }
+            console.log('WalletAddress in HandleAccountChanged =' + userAccount)
+        }
+
+        function trimMintButton(){
+            var enable = numMasks > 0 && numTikets === 0 && numNcts >= 2000;
+            $("#mint").attr('disabled', !enable);
+        }
+
+        function reloadInfo() {
+            try {
+                numMasks = 0;
+                numTikets = 0;
+                numNcts = 0;
+
+                if (userAccount == null || userAccount.length === 0) {
+                    console.log("NULL");
+                    $("#enableMetamask").attr('disabled', false)
+                    $("#balance").html("none");
+                    $("#ncts").html("none");
+                    $("#hashmasks").html("none");
+                    $("#mint").attr('disabled', true);
+                } else {
+                    console.log("account: " + userAccount);
+                    $("#enableMetamask").attr('disabled', true)
+                    $("#enableMetamask").html(userAccount);
+
+                    let tktContract = getTicketContract();
+                    let nctContract = getNctContract();
+                    let hmContract  = getHmContract();
+
+                    tktContract.methods.balanceOf(userAccount).call().then(result => {
+                        console.log('ticket balance: ' + result);
+                        numTikets = parseInt(result);
+                        $("#balance").html(result);
+                        trimMintButton()
+                    });
+
+                    nctContract.methods.balanceOf(userAccount).call().then(result => {
+                        console.log('ncts balance: ' + web3.utils.fromWei(result, "ether"));
+                        numNcts = parseFloat(web3.utils.fromWei(result, "ether"));
+                        $("#ncts").html(web3.utils.fromWei(result, "ether"));
+                        trimMintButton()
+                    });
+
+                    hmContract.methods.balanceOf(userAccount).call().then(result => {
+                        console.log('hashmasks balance: ' + result);
+                        numMasks = parseInt(result);
+                        $("#hashmasks").html(result);
+                        trimMintButton()
+                    });
+
+                    tktContract.methods.totalSupply().call().then(result => {
+                        console.log("totalSupply: " + result)
+                        $("#minted").html("minted: " + result + "/2500");
+                    });
+
+                }
+            } catch (err) {
+                console.log(err);
+            }
+
+        }
+
+        // Get Ticket contract
+        function getTicketContract() {
+            return new web3.eth.Contract(tk_abi, tk_addr);
+        }
+
+        // Get HashMasks contract
+        function getHmContract() {
+            return new web3.eth.Contract(hm_abi, hm_addr);
+        }
+
+        // Get NCT contract
+        function getNctContract() {
+            return new web3.eth.Contract(nct_abi, nct_addr);
+        }
+
+
+
+    </script>
+
+    <!-- NFT contract -->
+    <script type="text/javascript">
+        // mint
+        function mintNft() {
+            console.log('mintNft');
+
+            let nctContract = getNctContract();
+            let tktContract = getTicketContract();
+
+            $('.loading-spinner').addClass('active');
+            $("#mint").attr('disabled', true);
+
+            
+            nctContract.methods.increaseAllowance(tk_addr, "2000000000000000000000").send({from: userAccount}).then(function (result) {
+                tktContract.methods.mintTicket().send({from: userAccount}).then(function (result) {
+
+                    console.log("mintTicket: " + result)
+                    $('.loading-spinner').removeClass('active');
+                    reloadInfo();
+
+                }).catch(e => {
+                    $('.loading-spinner').removeClass('active');
+                    trimMintButton()
+                });
+            }).catch(e => {
+                $('.loading-spinner').removeClass('active');
+                trimMintButton()
+            });
+        }
+
+    </script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .mskDAO {
+            padding: 10px;
+            text-align: center;
+            margin: auto;
+            color: red;
+        }
+
+        .title {
+            text-align: center;
+            margin: auto;
+            margin-top: 9px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle{
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        table.info tr {
+            line-height: 2em;
+        }
+
+        table.info .table-label {
+            width: 10em;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        table.info .table-value {
+            word-break: break-all;
+        }
+
+        .loading-spinner {
+            display: none;
+        }
+
+        .loading-spinner.active {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Golden Ticket Minting
+            </h1>
+            <h2 class="subtitle">
+                <span id="minted"></span>
+            </h2>
+        </div>
+    </div>
+</section>
+
+<div class="row text-center">
+    <div class="mskDAO">
+        <img id="metaicon" class="meta-gray" width="100" height="100"
+             src="data:image/jpg;base64,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NfBgIQCmLQVQrphd08E5Z3YLfwJyq9fZ/wD/2gAMAwEAAgADAAAAEPPPPPPPKOPX+/f77dFPPPPPPPPPPPPPJ3vffffffffbn9PPPPPPPPPPPfffffffffffffffPPPPPPPEfvfbj+uNShoxfvfffgfPPPPPPvfe3fDeUPwJEufvfffrPPPOPfffZvPHG6VESQWEvfffffPPNffffVvPNKrU5VwrXd/fffefMHvffa/vPPLgUC/Bqfw/fffbsOPfffaWfPPPb2H6xbCJnffffdXfffffqr9/O9xCK4TlrlffffbX/fffcltnfKh1xJRGaqnffffb5/ffffd9NBibSnMrcNsfvffff/fffffVvDBEUFtmWN1X3ffffff/AH3331bhAiyX5W/FqwH33333/f33331+nqkt7pTvUhvf33332vX33330TyMEyOgPTqc7333333mz333326TUgsGtmz4H73333310zb33331f57Ya/Y9R5333333ozx/33332/wBIK2plTYO999999v8APPPfffffUbNlPjK1nvffffbXPPPPPvfffe42UbHf9PfffffuPPPPPAfvfffc8BoI7ffffffrPPPPPPPPPfffffffffffffffPPPPPPPPPLu9vffffffffepfPPPPPPPPPPPPKLNc2/f+/XFPPPPPPPP/xAAoEQEAAgECBQQDAQEBAAAAAAABABEhIDEQQVFhcTCBkcGhsdHw4fH/2gAIAQMBAT8Q11cEwMCcpRwqV6REUSq9bqQA29JB3nQ9NID1gQnogFcb+1KQqeYZZwKQYBsn8MR3fwxFQgjtoS9YsQK4gLY15sbcKegN/wCQ6MJscMQyjueTzI5/9yDehLxLGmhox/d/XEeoVht40YYStcmz/uspBUmmho5mmwrYxxs/XT+Q3xgwQgTGHfH0ZcaeZwMwKK0drSJVuhO8XRyS4GBuQQwQhtg14SpvwjX8ffSllRxBbpFG1cMWUVop0eGtf4iW2BNlXwIB97NhBLh4RV4D9R2aRTDjSyRyY7A46QtRR2fqIlbnBFQZlaO9vR0IxaPliM0+Ccwe6FRoOEKIYHlT8JNukYm0096SL3qj+JlS9zMcTzhwLWUK/v8AyZg/91lnAIhkH2lcKUht4QUQLfSbdJsYbanaLbJ9kSzL6U3/ACAZ7L+WAveu3b2lQ7RSGGcuH5gp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"
+             alt="">
+    </div>
+</div>
+
+<div style="margin-top: 30px;" class="row text-center">
+    <div class="col-md-12">
+        <button id="enableMetamask" class="btn btn-primary" onClick="javascript:connectMetamask();">
+            Connect with Metamask
+        </button>
+    </div>
+</div>
+
+<!-- Wallet -->
+<div class="tile is-parent">
+    <article class="tile is-child box notification is-info">
+        <table class="info">
+            <tbody>
+            <tr>
+                <td class="table-label">hashmasks:</td>
+                <td class="table-value"><span id="hashmasks"></span></td>
+            </tr>
+            <tr>
+                <td class="table-label">NCT:</td>
+                <td class="table-value"><span id="ncts"></span></td>
+            </tr>
+            <tr>
+                <td class="table-label">tickets:</td>
+                <td class="table-value"><span id="balance"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </article>
+</div>
+
+<div style="clear:both;">
+
+</div>
+
+<p style="margin: 0 auto; width: fit-content; margin-top: 20px;">
+    <button id="mint" class="candidate_vote_button button is-large is-success is-rounded"
+            onClick="javascript:mintNft();">mint your ticket
+        <i class="loading-spinner fa fa-spinner fa-spin"></i>
+    </button>
+</p>
+
+</body>
+</html>
