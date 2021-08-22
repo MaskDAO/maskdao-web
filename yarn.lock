@@ -2526,6 +2526,11 @@ uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
+vanilla-tilt@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/vanilla-tilt/-/vanilla-tilt-1.7.1.tgz#4f5f3a29707551f532e3766bc0062023c3eec186"
+  integrity sha512-S3qZcTqMEVthgdnxhOW1BDcXJ0kCzrhF/zQYPTwtRMeETn9DW3BEvQrfAMsMN02mi3TMytWR+ODuNrcfO7OGWw==
+
 varint@^5.0.0:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/varint/-/varint-5.0.2.tgz#5b47f8a947eb668b848e034dcfa87d0ff8a7f7a4"

@@ -12,7 +12,7 @@
       <div class="flex-center">
         <a class="nav-item" href="/" use:link>Home</a>
         <a class="nav-item" href="/about" use:link>About</a>
-        <a class="nav-item" href="/museum" use:link>The Museum</a>
+        <!-- <a class="nav-item" href="/museum" use:link>The Museum</a> -->
       </div>
     </div>
     <div class="unlock-wallet">
@@ -57,7 +57,7 @@
   }
 
   const truncateAddr = function(addr) {
-    return `0x...${addr.slice(38)}`
+    return `${addr.slice(0, 6)}...${addr.slice(38)}`
   }
 </script>
 

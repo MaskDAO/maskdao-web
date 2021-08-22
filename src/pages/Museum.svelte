@@ -10,8 +10,9 @@
   <div class="main">
     <h1>The Museum</h1>
     <div class="row">
-      <div class="col">
-        <img class="golden-ticket" src="/golden-ticket.png" />
+      <div class="col center">
+        <img class="golden-ticket" src="/golden-ticket.png" data-tilt data-tilt-full-page-listening />
+        <small>Hover me!</small>
       </div>
       <div class="col">
         <h2>Why you should get a Golden Ticket?</h2>
@@ -19,10 +20,14 @@
         {#if unlocked_val}
           {#if isTesting}
             <div class="center">
-              {#if !loading}
-                <div class="button" on:click={() => mintTicket()}>Mint</div>
-              {:else}
-                <div>Loading...</div>
+              {#if mintable}
+                {#if !loading}
+                  {#if eligible}
+                    <div class="button" on:click={() => mintTicket()}>Mint</div>
+                  {/if}
+                {:else}
+                  <div>Loading...</div>
+                {/if}
               {/if}
               {#if error.length > 0}
                 <div class="error">{error}</div>
@@ -43,21 +48,47 @@
 </div>
 
 <script>
+  import { onMount, afterUpdate } from "svelte"
   import Nav from "../components/Nav.svelte"
   import MobileMenu from "../components/MobileMenu.svelte"
   import Footer from "../components/Footer.svelte"
   import { link } from "svelte-spa-router"
   import { web3, connected, selectedAccount, chainId } from "svelte-web3"
-  import { contracts } from "../store"
+  import { contracts, NCT_BAL, SUPPLY_LIMIT } from "../store"
+  import VanillaTilt from 'vanilla-tilt'
 
   let open = false
   let loading = false
+  let mintable = false
+  let eligible = false
   let error = ''
+  let trackChanges = {
+    account: []
+  }
 
   $: unlocked_val = $connected
   $: account = $selectedAccount || '0x0000000000000000000000000000000000000000'
-  $: balance = $connected ? $web3.eth.getBalance(account) : ''
   $: isTesting = $chainId === '0x4'
+
+  onMount(function() {
+    VanillaTilt.init(document.querySelectorAll(".golden-ticket"))
+  })
+
+  afterUpdate(function() {
+    trackChanges.account.push(account)
+    // Check Eligibility on Account Switch
+    if(trackChanges.account.length > 1 && trackChanges.account[0] !== trackChanges.account[1]) {
+      eligible = false
+      error = ''
+      trackChanges.account = []
+      initializeMint()
+      selectedAccount.subscribe(value => {
+        if(value) {
+          checkEligibility(value)
+        }
+      })
+    }
+  })
 
   const showNav = function(event) {
     open = event.detail.open
@@ -68,15 +99,80 @@
     return contract
   }
 
+  const checkEligibility = function(acc) {
+    let hashmaskContract = getContract('hashmask')
+    let nctContract = getContract('nct')
+    let ticketContract = getContract('ticket')
+
+    loading = true
+    error = ''
+    Promise.all([
+      hashmaskContract.methods.balanceOf(acc).call(),
+      nctContract.methods.balanceOf(acc).call(),
+      ticketContract.methods.balanceOf(acc).call(),
+      ticketContract.methods.totalSupply().call()
+    ])
+    .then(function(res){
+      let hmBal = res[0],
+          nctBal = res[1],
+          ticketBal = res[2],
+          supply = res[3]
+      loading = false
+      eligible = hmBal > 0 && nctBal >= parseInt(NCT_BAL) && ticketBal == 0 && supply < parseInt(SUPPLY_LIMIT)
+      console.log('HM:', hmBal)
+      console.log('NCT:', nctBal)
+      console.log('Ticket:', ticketBal)
+      console.log('Supply:', supply)
+      console.log('Eligible:', eligible)
+      if(!eligible) {
+        if(supply >= parseInt(SUPPLY_LIMIT)) {
+          error = 'All ticket supply has been claimed.'
+        }
+        else if(ticketBal > 0) {
+          error = 'Not eligible for minting. You already have a ticket.'
+        }
+        else {
+          error = 'Not eligible for minting. You may not have enough NCT or not own at least 1 Hashmask.'
+        }
+      }
+    })
+    .catch(function(e) {
+      error = e
+    })
+  }
+
+  const initializeMint = function(connected) {
+    let ticketContract = getContract('ticket')
+    ticketContract.methods.isMintEnabled().call().then(function (result) {
+      mintable = result
+      console.log('Mintable:', mintable)
+      if(!result) {
+        error = 'Minting contract is disabled. Please come back later.'
+      }
+      else {
+        checkEligibility()
+      }
+    })
+    .catch(e => {
+      error = e
+    })
+  }
+
   const mintTicket = function(event) {
     loading = true
     error = ''
     let nctContract = getContract('nct')
     let ticketContract = getContract('ticket')
 
-    nctContract.methods.increaseAllowance(contracts.ticket.address, "2000000000000000000000").send({from: account}).then(function (result) {
-      console.log("increaseAllowance(): " + result)
-      loading = false
+    nctContract.methods.increaseAllowance(contracts.ticket.address, NCT_BAL).send({from: account}).then(function (result) {
+      ticketContract.methods.mintTicket().send({from: account}).then(function (result) {
+        loading = false
+        console.log("mintTicket() called", result)
+        checkEligibility()
+      }).catch(e => {
+        loading = false
+        error = e
+      });
     }).catch(e => {
       loading = false
       error = e
@@ -114,19 +210,13 @@
     padding: 1rem;
   }
 
-  .golden-ticket {
-    animation: float 3s ease-in-out infinite;
-  }
+  @media (max-width: 660px) {
+    .row {
+      display: block;
+    }
 
-  @keyframes float {
-    0% {
-      transform: translatey(0px);
-    }
-    50% {
-      transform: translatey(-6px);
-    }
-    100% {
-      transform: translatey(0px);
+    .row .col {
+      width: 100%;
     }
   }
 
