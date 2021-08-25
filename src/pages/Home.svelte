@@ -1,25 +1,15 @@
 <div>
-  <Nav
-  {open}
-  on:message={showNav}/>
-  {#if open}
-    <MobileMenu
-    {open}
-    on:message={showNav}/>
-  {/if}
   <div class="main">
     <div class="hero-icon">
       <img src="/logo.svg" />
     </div>
-    <h1>MaskDAO</h1>
-    <div>Hashmask-inspired Decentralized Community</div>
+    <div>Taking you to <a href="https://www.maskdao.io/">maskdao.io</a>...</div>
   </div>
   <Footer />
 </div>
 
 <script>
   import Nav from "../components/Nav.svelte"
-  import MobileMenu from "../components/MobileMenu.svelte"
   import Footer from "../components/Footer.svelte"
   import { link } from "svelte-spa-router"
 
@@ -28,6 +18,8 @@
   const showNav = function(event) {
     open = event.detail.open
   }
+
+  window.location.href = 'https://www.maskdao.io'
 </script>
 
 <style>
